@@ -3,63 +3,19 @@ import LeftAside from "./left";
 import Main from "./main";
 import style from "./index.module.css";
 import Input from "src/components/input";
+import Modal from "src/components/modal";
+import Typography from "src/components/typography";
 
-const Layout = () => {
-  const [formValues, setFormValues] = React.useState<any>({});
-  const [formErrors, setFormErrors] = React.useState<any>({});
+type LayoutProps = {
+  // childrens are array
+  children: React.ReactNode[];
+};
 
-  const handleErrors = (name: string, error: string) => {
-    setFormErrors((prev: any) => ({ ...prev, [name]: error }));
-  };
-
-  const handleInputChanges = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    e.persist();
-    const { name, value } = e.currentTarget;
-    setFormValues((prev: any) => ({ ...prev, [name]: value }));
-
-    // check if the input is empty
-    if (value === "") {
-      handleErrors(name, "This field is required");
-    } else {
-      handleErrors(name, "");
-    }
-  };
-
+const Layout = ({ children }: LayoutProps) => {
   return (
     <div className={style.container}>
-      <LeftAside title='General Settings'>
-        <Input
-          placeholder='Search'
-          type='text'
-          onChange={handleInputChanges}
-          label='Headline'
-          name='headline'
-          value={formValues.headline || ""}
-          errorText={formErrors.headline}
-        />
-        <Input
-          placeholder='Search'
-          type='text'
-          onChange={handleInputChanges}
-          label='Description'
-          isTextArea
-          name='description'
-          value={formValues.description || ""}
-          errorText={formErrors.description}
-        />
-        <Input
-          placeholder='Success'
-          type='text'
-          onChange={handleInputChanges}
-          label='Success Message'
-          name='success'
-          value={formValues.success || ""}
-          errorText={formErrors.success}
-        />
-      </LeftAside>
-      <Main />
+      {children[0]}
+      {children[1]}
     </div>
   );
 };

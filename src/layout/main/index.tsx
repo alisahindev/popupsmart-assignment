@@ -4,21 +4,12 @@ import { useGlobalContext } from "src/context/GlobalContext";
 import { IGlobal } from "src/context/interfaces";
 import style from "./index.module.css";
 
-const Main = () => {
-  const { setModalOpen, isModalOpen }: IGlobal = useGlobalContext();
+type MainProps = {
+  children: React.ReactNode;
+};
 
-  useEffect(() => {
-    setModalOpen(true);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  return (
-    <main className={style.container}>
-      <Modal isOpen={isModalOpen} setIsOpen={setModalOpen}>
-        asdfasfasf
-      </Modal>
-    </main>
-  );
+const Main = ({ children }: MainProps) => {
+  return <main className={style.container}>{children}</main>;
 };
 
 export default Main;

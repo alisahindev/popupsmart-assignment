@@ -1,0 +1,11 @@
+.headline {
+  font-weight: var(--font-weight-medium);
+  font-size: calc(var(--font-size-medium) * 4);
+  line-height: 77px;
+}
+
+.description {
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-xlarge);
+  line-height: 24px;
+}

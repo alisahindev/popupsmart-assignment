@@ -10,7 +10,7 @@ type InputProps = {
   value?: string;
   isTextArea?: boolean;
   // onChange will be a function but it will check if the event is a text area or not
-  onChange: (
+  onChange?: (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => void;
   name?: string;
