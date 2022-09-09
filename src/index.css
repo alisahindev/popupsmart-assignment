@@ -1,13 +1,48 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Inter:wght@200;300;400;500;600;700;800;900&display=swap");
+
+:root {
+  --text-black: #000000;
+  --text-white: #ffffff;
+  --text-gray: #9b9b9b;
+  --text-error: #ea0f0f;
+  --theme-green: #639005;
+  --theme-bg: #585b68;
+  --border-color: #d2dae3;
+  --font-size-small: 14px;
+  --font-size-medium: 16px;
+  --font-size-large: 18px;
+  --font-size-xlarge: 20px;
+  --font-size-xxlarge: 24px;
+  --font-size-xxxlarge: 48px;
+  --font-family: "Inter", sans-serif;
+  --border-radius: 4px;
+  --border-radius-large: 8px;
+  --font-weight-bold: 700;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --font-weight-light: 300;
+  --font-weight-thin: 200;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  outline: none;
+  font-style: normal;
+}
+
+body {
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #e5e5e5;
+  height: 100vh;
+  width: 100vw;
+}
+
+#root {
+  height: 100%;
 }

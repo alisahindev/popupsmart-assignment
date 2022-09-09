@@ -1,0 +1,8 @@
+.container {
+  height: 100%;
+  width: 75%;
+  border-right: 1px solid #e8e8e8;
+  background: var(--theme-bg) url("src/assets/images/bg.svg") center center
+    no-repeat;
+  position: relative;
+}
