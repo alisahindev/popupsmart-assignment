@@ -22,7 +22,8 @@ function App() {
   const handleInputChanges = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    e.persist();
+    // submit durumunda sayfa yenilenmesini önler
+    e.stopPropagation();
     const { name, value, validationMessage } = e.currentTarget;
     // Input üzerinden veriler alınarak context state dinamik olarak ekleniyor.
     setFormData({ ...formData, [name]: value });
@@ -56,6 +57,7 @@ function App() {
             name="description"
             value={formData.description || ""}
             errorText={formErrors.description}
+            required
           />
           <Input
             placeholder="Success"
@@ -65,6 +67,7 @@ function App() {
             name="success"
             value={formData.success || ""}
             errorText={formErrors.success}
+            required
           />
         </form>
       </LeftAside>
