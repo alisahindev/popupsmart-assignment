@@ -9,6 +9,7 @@ const initialState: IGlobalContext = {
   loading: false,
   isError: false,
   isModalOpen: false,
+  formData: {},
 };
 
 const GlobalProvider = ({ children }: any): JSX.Element => {
@@ -28,10 +29,18 @@ const GlobalProvider = ({ children }: any): JSX.Element => {
     });
   };
 
+  const setFormData = (data: Object) => {
+    dispatch({
+      type: "SET_FORM_DATA",
+      payload: data,
+    });
+  };
+
   const value: any = {
     ...state,
     setLoading,
     setModalOpen,
+    setFormData,
   };
 
   return (

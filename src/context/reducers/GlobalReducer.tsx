@@ -3,6 +3,7 @@ import { IGlobalContext } from "src/context/interfaces";
 const ActionType = {
   SET_LOADING: "SET_LOADING",
   SET_MODAL_OPEN: "SET_MODAL_OPEN",
+  SET_FORM_DATA: "SET_FORM_DATA",
 };
 
 export default function GlobalReducer(
@@ -20,6 +21,12 @@ export default function GlobalReducer(
         ...state,
         isModalOpen: action.payload,
       };
+    case ActionType.SET_FORM_DATA:
+      return {
+        ...state,
+        formData: action.payload,
+      };
+
     default:
       return state;
   }

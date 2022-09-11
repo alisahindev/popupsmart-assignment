@@ -16,6 +16,7 @@ type InputProps = {
   name?: string;
   isCustomer?: boolean;
   inputStyle?: React.CSSProperties;
+  required?: boolean;
 };
 
 const Input = ({
@@ -29,6 +30,7 @@ const Input = ({
   name,
   isCustomer,
   inputStyle,
+  required,
 }: InputProps) => {
   return (
     <span className={isCustomer ? style.customerContainer : style.container}>
@@ -44,6 +46,7 @@ const Input = ({
           placeholder={placeholder}
           onChange={onChange}
           value={value}
+          required
           rows={5}
           style={{ resize: "none" }}
           name={name}
@@ -52,6 +55,7 @@ const Input = ({
         <input
           id={name}
           type={type}
+          required
           placeholder={placeholder}
           className={isCustomer ? style.isCustomer : style.input}
           onChange={onChange}
@@ -60,7 +64,7 @@ const Input = ({
           style={inputStyle}
         />
       )}
-      {errorText && (
+      {errorText && required && (
         <span className={style.errorText}>
           <ErrorSvg width={15} />
           {errorText}

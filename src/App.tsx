@@ -1,13 +1,16 @@
 import React from "react";
 import Input from "./components/input";
 import Modal from "./components/modal";
+import { useGlobalContext } from "./context/GlobalContext";
+import { IGlobal } from "./context/interfaces";
 import Layout from "./layout";
 import LeftAside from "./layout/left";
 import Main from "./layout/main";
 import NewStuff from "./pages/Stuff/NewStuff";
 
 function App() {
-  const [formValues, setFormValues] = React.useState<any>({});
+  const { formData, setFormData }: IGlobal = useGlobalContext();
+
   const [formErrors, setFormErrors] = React.useState<any>({});
 
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
@@ -20,15 +23,14 @@ function App() {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     e.persist();
-    const { name, value } = e.currentTarget;
-    setFormValues((prev: any) => ({ ...prev, [name]: value }));
-
-    // check if the input is empty
-    if (value === "") {
-      handleErrors(name, "This field is required");
-    } else {
-      handleErrors(name, "");
-    }
+    const { name, value, validationMessage } = e.currentTarget;
+    // Input üzerinden veriler alınarak context state dinamik olarak ekleniyor.
+    setFormData({ ...formData, [name]: value });
+    // Inputların gereklilik durumlarına göre error mesajları yakalanıyor.
+    // Error kısmı her halükarda yakalanır bunun için kontrol ihtiyacı hissetmedim.
+    // Eğer bir error var ise elementin "validty" objesinde ki standart validate koşullarına göre doluyor.
+    // Error handling çok daha profesyonel şekilde yapılabilir. Şimdilik bu yeterlidir.
+    handleErrors(name, validationMessage);
   };
 
   return (
@@ -41,8 +43,9 @@ function App() {
             onChange={handleInputChanges}
             label="Headline"
             name="headline"
-            value={formValues.headline || ""}
+            value={formData.headline || ""}
             errorText={formErrors.headline}
+            required
           />
           <Input
             placeholder="Search"
@@ -51,7 +54,7 @@ function App() {
             label="Description"
             isTextArea
             name="description"
-            value={formValues.description || ""}
+            value={formData.description || ""}
             errorText={formErrors.description}
           />
           <Input
@@ -60,7 +63,7 @@ function App() {
             onChange={handleInputChanges}
             label="Success Message"
             name="success"
-            value={formValues.success || ""}
+            value={formData.success || ""}
             errorText={formErrors.success}
           />
         </form>
