@@ -14,6 +14,8 @@ type InputProps = {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => void;
   name?: string;
+  isCustomer?: boolean;
+  inputStyle?: React.CSSProperties;
 };
 
 const Input = ({
@@ -25,12 +27,16 @@ const Input = ({
   value,
   isTextArea,
   name,
+  isCustomer,
+  inputStyle,
 }: InputProps) => {
   return (
-    <span className={style.container}>
-      <label className={style.label} htmlFor={name}>
-        {label}
-      </label>
+    <span className={isCustomer ? style.customerContainer : style.container}>
+      {label && (
+        <label className={style.label} htmlFor={name}>
+          {label}
+        </label>
+      )}
       {isTextArea ? (
         <textarea
           id={name}
@@ -39,7 +45,6 @@ const Input = ({
           onChange={onChange}
           value={value}
           rows={5}
-          // close resize
           style={{ resize: "none" }}
           name={name}
         />
@@ -48,10 +53,11 @@ const Input = ({
           id={name}
           type={type}
           placeholder={placeholder}
-          className={style.input}
+          className={isCustomer ? style.isCustomer : style.input}
           onChange={onChange}
           value={value}
           name={name}
+          style={inputStyle}
         />
       )}
       {errorText && (

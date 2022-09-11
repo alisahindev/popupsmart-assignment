@@ -1,0 +1,10 @@
+.container {
+  padding: 11px;
+  background-color: var(--button-green);
+  border: none;
+  color: var(--text-white);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-medium);
+  line-height: 19px;
+  text-align: center;
+}

@@ -1,4 +1,5 @@
-.container {
+.container,
+.customerContainer {
   display: flex;
   flex-direction: column;
 }
@@ -13,7 +14,8 @@
 
 .input {
   border-radius: var(--border-radius-large);
-  border: 1px solid var(--border-color);
+  border: none;
+  outline: 1px solid var(--border-color);
   padding: 15px;
   font-family: var(--font-family);
   font-weight: var(--font-weight-normal);
@@ -25,11 +27,13 @@
   color: var(--text-gray);
 }
 
-/* If more than one input is sequential */
 .container + .container {
   margin-top: 36px;
 }
 
+.customerContainer + .customerContainer {
+  margin-top: 15px;
+}
 .errorText {
   display: flex;
   align-items: center;
@@ -41,4 +45,14 @@
   font-size: var(--font-size-small);
   line-height: 17px;
   color: var(--text-error);
+}
+
+.isCustomer {
+  background-color: var(--theme-gray);
+  border: none;
+  padding: 11px 13px;
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-medium);
+  line-height: 19px;
+  color: var(--text-black);
 }

@@ -1,7 +1,6 @@
 import React from "react";
 import Input from "./components/input";
 import Modal from "./components/modal";
-import Typography from "./components/typography";
 import Layout from "./layout";
 import LeftAside from "./layout/left";
 import Main from "./layout/main";
@@ -34,33 +33,33 @@ function App() {
 
   return (
     <Layout>
-      <LeftAside title='General Settings'>
-        <form action=''>
+      <LeftAside title="General Settings">
+        <form action="">
           <Input
-            placeholder='Search'
-            type='text'
+            placeholder="Search"
+            type="text"
             onChange={handleInputChanges}
-            label='Headline'
-            name='headline'
+            label="Headline"
+            name="headline"
             value={formValues.headline || ""}
             errorText={formErrors.headline}
           />
           <Input
-            placeholder='Search'
-            type='text'
+            placeholder="Search"
+            type="text"
             onChange={handleInputChanges}
-            label='Description'
+            label="Description"
             isTextArea
-            name='description'
+            name="description"
             value={formValues.description || ""}
             errorText={formErrors.description}
           />
           <Input
-            placeholder='Success'
-            type='text'
+            placeholder="Success"
+            type="text"
             onChange={handleInputChanges}
-            label='Success Message'
-            name='success'
+            label="Success Message"
+            name="success"
             value={formValues.success || ""}
             errorText={formErrors.success}
           />
