@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/popupsmart-assignment/static/css/main.2fe5490b.css",
-    "main.js": "/popupsmart-assignment/static/js/main.6ef3bafb.js",
+    "main.css": "/popupsmart-assignment/static/css/main.ee4bb8fd.css",
+    "main.js": "/popupsmart-assignment/static/js/main.66ddb6b7.js",
     "static/media/bg.svg": "/popupsmart-assignment/static/media/bg.3fb66892f8db031be06c.svg",
     "index.html": "/popupsmart-assignment/index.html",
     "static/media/close.svg": "/popupsmart-assignment/static/media/close.98e4843ac803daa9db56c14a471ad89c.svg",
-    "main.2fe5490b.css.map": "/popupsmart-assignment/static/css/main.2fe5490b.css.map",
-    "main.6ef3bafb.js.map": "/popupsmart-assignment/static/js/main.6ef3bafb.js.map"
+    "main.ee4bb8fd.css.map": "/popupsmart-assignment/static/css/main.ee4bb8fd.css.map",
+    "main.66ddb6b7.js.map": "/popupsmart-assignment/static/js/main.66ddb6b7.js.map"
   },
   "entrypoints": [
-    "static/css/main.2fe5490b.css",
-    "static/js/main.6ef3bafb.js"
+    "static/css/main.ee4bb8fd.css",
+    "static/js/main.66ddb6b7.js"
   ]
 }
