@@ -6,6 +6,7 @@ import { IGlobal } from "./context/interfaces";
 import Layout from "./layout";
 import LeftAside from "./layout/left";
 import Main from "./layout/main";
+import SuccessPage from "./pages/Complete/Success";
 import NewStuff from "./pages/Stuff/NewStuff";
 import { handleInputChanges } from "./utils/HandleInputChanges";
 
@@ -22,8 +23,7 @@ function App() {
   };
 
   const handleNext = () => {
-    localStorage.setItem("formData", JSON.stringify(formData));
-    setStep(step + 1);
+    !isError && setStep(step + 1);
   };
 
   return (
@@ -64,11 +64,9 @@ function App() {
       <Main>
         <Modal isOpen={isOpen} setIsOpen={setIsOpen} isClosable={step !== 1}>
           {step === 1 ? (
-            <NewStuff handleNext={handleNext} />
+            <NewStuff handleNext={handleNext} hasError={isError} />
           ) : (
-            <div>
-              <h1>Step 2</h1>
-            </div>
+            <SuccessPage />
           )}
         </Modal>
       </Main>

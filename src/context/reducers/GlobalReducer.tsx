@@ -4,6 +4,7 @@ const ActionType = {
   SET_LOADING: "SET_LOADING",
   SET_MODAL_OPEN: "SET_MODAL_OPEN",
   SET_FORM_DATA: "SET_FORM_DATA",
+  SET_ERROR: "SET_ERROR",
 };
 
 export default function GlobalReducer(
@@ -26,7 +27,11 @@ export default function GlobalReducer(
         ...state,
         formData: action.payload,
       };
-
+    case ActionType.SET_ERROR:
+      return {
+        ...state,
+        isError: action.payload,
+      };
     default:
       return state;
   }

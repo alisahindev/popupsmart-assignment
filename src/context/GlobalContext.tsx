@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import { createContext, useContext } from "react";
 import { IGlobalContext } from "./interfaces";
 import GlobalReducer from "./reducers/GlobalReducer";
@@ -9,11 +9,21 @@ const initialState: IGlobalContext = {
   loading: false,
   isModalOpen: false,
   formData: JSON.parse(localStorage.getItem("formData") || "{}"),
-  isError: true,
+  isError: false,
 };
 
 const GlobalProvider = ({ children }: any): JSX.Element => {
   const [state, dispatch] = useReducer(GlobalReducer, initialState);
+
+  useEffect(() => {
+    localStorage.setItem("formData", JSON.stringify(state.formData));
+    // if there is an error in the form, set isError to true
+    const error =
+      Object.values(state.formData).some((item: any) => item.error !== "") ||
+      Object.values(state.formData).length === 0;
+
+    dispatch({ type: "SET_ERROR", payload: error });
+  }, [state.formData]);
 
   const setLoading = (loading: boolean) => {
     dispatch({

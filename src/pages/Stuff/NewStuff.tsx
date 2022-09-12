@@ -1,28 +1,62 @@
 import React, { useEffect } from "react";
 import Button from "src/components/button";
 import Input from "src/components/input";
+import Select from "src/components/select";
 import Typography from "src/components/typography";
 import { useGlobalContext } from "src/context/GlobalContext";
 import { IGlobal } from "src/context/interfaces";
+import { API_URL } from "src/utils/Constants";
 import { handleInputChanges } from "src/utils/HandleInputChanges";
 import style from "./index.module.css";
 
 type NewStuffProps = {
   handleNext: () => void;
+  hasError: boolean;
 };
 
-const NewStuff = ({ handleNext }: NewStuffProps) => {
-  const { formData, setFormData, isError }: IGlobal = useGlobalContext();
-
+const NewStuff = ({ handleNext, hasError }: NewStuffProps) => {
+  const { formData, setFormData }: IGlobal = useGlobalContext();
+  const [options, setOptions] = React.useState<any[]>([]);
   const handleChanges = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     handleInputChanges(e, formData, setFormData);
   };
 
+  const getOptions = () => {
+    // use fetch https://apiv2.popupsmart.com/api/googlefont
+    fetch(API_URL)
+      .then((res) => res.json())
+      .then((data) => {
+        // filter without monospace fonts
+        const filteredData = data.filter((item: any) => {
+          return item.category !== "monospace";
+        });
+
+        // option filled with family name and sorting a-z
+        const _options = filteredData
+          .map((item: any) => {
+            return item.family;
+          })
+          .sort((a: any, b: any) => {
+            if (a < b) {
+              return -1;
+            }
+            if (a > b) {
+              return 1;
+            }
+            return 0;
+          });
+        setOptions(_options);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   useEffect(() => {
-    console.log(isError);
-  }, [isError]);
+    getOptions();
+  }, []);
 
   return (
     <div className={style.newStuffContainer}>
@@ -66,18 +100,24 @@ const NewStuff = ({ handleNext }: NewStuffProps) => {
         value={formData.email?.value || ""}
         errorText={formData.email?.error}
       />
-      <Input
+      <Select
         inputStyle={{
-          margin: "0 10px",
+          margin: "10px 10px 0",
         }}
-        isCustomer
-        placeholder='Select Font'
-        type='text'
-        name='fonts'
         required
-        onChange={handleChanges}
-        value={formData.fonts?.value || ""}
-        errorText={formData.fonts?.error}
+        name='category'
+        options={options}
+        value={formData.category?.value || ""}
+        onChange={(value) => {
+          setFormData({
+            ...formData,
+            category: {
+              value,
+              error: "",
+            },
+          });
+        }}
+        placeholder='Category'
       />
       <Button
         buttonStyle={{
@@ -87,7 +127,7 @@ const NewStuff = ({ handleNext }: NewStuffProps) => {
         isUpperCase
         onClick={handleNext}
         type='submit'
-        disabled={isError}
+        disabled={hasError}
       >
         get my 30% OFF
       </Button>
