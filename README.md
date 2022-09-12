@@ -17,7 +17,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ### `npm run deploy`
 
-Runs the app in the production mode.\
+Build app for production to the `build` folder.\
 Open [this link](https://alisahindev.github.io/popupsmart-assignment/) to view it in the browser.
 
 # What was used in this project?
