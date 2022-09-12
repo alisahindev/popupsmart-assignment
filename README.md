@@ -1,26 +1,9 @@
 # Ali Şahin - PopupSmart Assignment
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Nearly all of the code is written in TypeScript.
 
 # You can find the live version of the project [here](https://alisahindev.github.io/popupsmart-assignment/).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm install`
-
-Installs all the dependencies required for the project.
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-### `npm run deploy`
-
-Build app for production to the `build` folder.\
-Open [this link](https://alisahindev.github.io/popupsmart-assignment/) to view it in the browser.
 
 # What was used in this project?
 
@@ -29,6 +12,7 @@ Open [this link](https://alisahindev.github.io/popupsmart-assignment/) to view i
 - React Context API
 - Typescript
 - CSS Modules
+- Fetch API
 
 # How was the project structured?
 
@@ -56,3 +40,21 @@ Open [this link](https://alisahindev.github.io/popupsmart-assignment/) to view i
 # What are the contexts used in this project?
 
 - Only global context is used in this project.
+
+## Available Scripts
+
+In the project directory, you can run:
+
+### `npm install`
+
+Installs all the dependencies required for the project.
+
+### `npm start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+### `npm run deploy`
+
+Build app for production to the `build` folder.\
+Open [this link](https://alisahindev.github.io/popupsmart-assignment/) to view it in the browser.
