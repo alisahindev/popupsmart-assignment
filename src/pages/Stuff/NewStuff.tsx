@@ -1,23 +1,43 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Button from "src/components/button";
 import Input from "src/components/input";
 import Typography from "src/components/typography";
 import { useGlobalContext } from "src/context/GlobalContext";
 import { IGlobal } from "src/context/interfaces";
+import { handleInputChanges } from "src/utils/HandleInputChanges";
 import style from "./index.module.css";
-const NewStuff = () => {
-  const { formData }: IGlobal = useGlobalContext();
+
+type NewStuffProps = {
+  handleNext: () => void;
+};
+
+const NewStuff = ({ handleNext }: NewStuffProps) => {
+  const { formData, setFormData, isError }: IGlobal = useGlobalContext();
+
+  const handleChanges = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    handleInputChanges(e, formData, setFormData);
+  };
+
+  useEffect(() => {
+    console.log(isError);
+  }, [isError]);
 
   return (
     <div className={style.newStuffContainer}>
-      <Typography text={formData.headline} variant="headline" />
       <Typography
-        text={formData.description}
-        variant="description"
         textStyle={{
-          marginRight: "30px",
-          marginLeft: "30px",
-          marginBottom: "31px",
+          textTransform: "uppercase",
+        }}
+        text={formData.headline?.value}
+        variant='headline'
+      />
+      <Typography
+        text={formData.description?.value}
+        variant='description'
+        textStyle={{
+          margin: "0 30px 31px",
         }}
       />
       <Input
@@ -25,29 +45,39 @@ const NewStuff = () => {
           margin: "0 10px",
         }}
         isCustomer
-        placeholder="Your Name"
-        type="text"
-        name="headline"
+        placeholder='Your Name'
+        type='text'
+        name='name'
+        required
+        onChange={handleChanges}
+        value={formData.name?.value || ""}
+        errorText={formData.name?.error}
       />
       <Input
         inputStyle={{
-          marginLeft: "10px",
-          marginRight: "10px",
+          margin: "0 10px",
         }}
         isCustomer
-        placeholder="Email"
-        type="text"
-        name="headline"
+        placeholder='Email'
+        type='email'
+        name='email'
+        required
+        onChange={handleChanges}
+        value={formData.email?.value || ""}
+        errorText={formData.email?.error}
       />
       <Input
         inputStyle={{
-          marginLeft: "10px",
-          marginRight: "10px",
+          margin: "0 10px",
         }}
         isCustomer
-        placeholder="Select Font"
-        type="text"
-        name="headline"
+        placeholder='Select Font'
+        type='text'
+        name='fonts'
+        required
+        onChange={handleChanges}
+        value={formData.fonts?.value || ""}
+        errorText={formData.fonts?.error}
       />
       <Button
         buttonStyle={{
@@ -55,6 +85,9 @@ const NewStuff = () => {
         }}
         fullWidth
         isUpperCase
+        onClick={handleNext}
+        type='submit'
+        disabled={isError}
       >
         get my 30% OFF
       </Button>

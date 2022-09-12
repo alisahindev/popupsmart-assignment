@@ -65,7 +65,7 @@ const Input = ({
         />
       )}
       {errorText && required && (
-        <span className={style.errorText}>
+        <span className={style.errorText} style={inputStyle}>
           <ErrorSvg width={15} />
           {errorText}
         </span>

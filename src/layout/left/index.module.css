@@ -5,6 +5,8 @@
   width: 25%;
   height: 100%;
   padding: 81px 65px;
+  overflow: hidden;
+  overflow-y: auto;
 }
 
 .title {

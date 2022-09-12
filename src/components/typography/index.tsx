@@ -9,7 +9,11 @@ type TypographyProps = {
 
 const Typography = ({ text, variant, textStyle }: TypographyProps) => {
   return (
-    <p className={style[variant]} style={textStyle}>
+    <p
+      className={`${style[variant]} ${style.overflow}`}
+      style={textStyle}
+      title={text}
+    >
       {text}
     </p>
   );

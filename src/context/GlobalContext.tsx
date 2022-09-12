@@ -7,9 +7,9 @@ export const GlobalContext = createContext(undefined);
 
 const initialState: IGlobalContext = {
   loading: false,
-  isError: false,
   isModalOpen: false,
-  formData: {},
+  formData: JSON.parse(localStorage.getItem("formData") || "{}"),
+  isError: true,
 };
 
 const GlobalProvider = ({ children }: any): JSX.Element => {

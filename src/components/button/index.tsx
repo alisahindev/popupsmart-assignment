@@ -7,6 +7,8 @@ type ButtonProps = {
   fullWidth?: boolean;
   isUpperCase?: boolean;
   buttonStyle?: React.CSSProperties;
+  disabled?: boolean;
+  type?: "button" | "submit" | "reset";
 };
 
 const Button = ({
@@ -15,6 +17,8 @@ const Button = ({
   fullWidth = false,
   isUpperCase = false,
   buttonStyle,
+  disabled = false,
+  type = "button",
 }: ButtonProps) => {
   return (
     <button
@@ -25,6 +29,8 @@ const Button = ({
         ...buttonStyle,
       }}
       onClick={onClick}
+      disabled={disabled}
+      type={type}
     >
       {children}
     </button>

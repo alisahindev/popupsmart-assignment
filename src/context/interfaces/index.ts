@@ -1,8 +1,8 @@
 export interface IGlobalContext {
-  isError: boolean;
   loading: boolean;
   isModalOpen: boolean;
   formData: any;
+  isError: boolean;
 }
 
 export interface IGlobal extends IGlobalContext {
