@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# Ali Şahin - PopupSmart Assignment
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+# You can find the live version of the project [here](https://alisahindev.github.io/popupsmart-assignment/).
 
 ## Available Scripts
 
