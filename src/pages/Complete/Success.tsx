@@ -14,6 +14,7 @@ const SuccessPage = () => {
         variant='headline'
         textStyle={{
           marginTop: "2px",
+          textTransform: "capitalize",
         }}
         text={formData.success?.value}
       />
